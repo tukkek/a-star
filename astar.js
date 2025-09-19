@@ -6,12 +6,16 @@
 // http://eloquentjavascript.net/appendix2.html
 (function(definition) {
   /* global module, define */
-  if (typeof module === 'object' && typeof module.exports === 'object') module.exports = definition();
+  let exports = definition();
+  if (typeof module === 'object' && typeof module.exports === 'object') module.exports = exports;
   if (typeof define === 'function' && define.amd) define([], definition);
   if(typeof(window)!='undefined'){
-    var exports = definition();
     window.astar = exports.astar;
     window.Graph = exports.Graph;
+  }
+  if(typeof(globalThis)!='undefined'){
+    globalThis.astar = exports.astar;
+    globalThis.Graph = exports.Graph;
   }
 })(function() {
 
