@@ -8,7 +8,7 @@
   /* global module, define */
   if (typeof module === 'object' && typeof module.exports === 'object') module.exports = definition();
   if (typeof define === 'function' && define.amd) define([], definition);
-  if(window){
+  if(typeof(window)!='undefined'){
     var exports = definition();
     window.astar = exports.astar;
     window.Graph = exports.Graph;
